@@ -128,6 +128,7 @@ void turnToList(Node **head, char *string, int *els){
 
 void checkSun(Node *head, int els){
     int iter = 0;
+    int jum = 0;
     int prev1, prev2;
     Node * cur = head;
     Node * places = NULL;
@@ -143,13 +144,19 @@ void checkSun(Node *head, int els){
         else{
             if(heig>prev1 && prev1<prev2){
                 putFront(&places, els-i+1);
+                jum++;
             }
             prev2 = prev1;
             prev1 = heig;
         }
         cur = cur->next;
     }
-    printList(places);
+    if(jum>0){
+        printList(places);
+    }
+    else{
+        printf("NONE");
+    }
 }
 
 
