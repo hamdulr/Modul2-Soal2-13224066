@@ -93,10 +93,21 @@ int strToNum(char *str){
     }
     int res = 0;
     int base = 1;
-    for(int i = 0; i<truelen;i++){
-        res+= charToInt(str[truelen-i-1])*base;
-        base*=10;
+    if(str[0]=='-'){
+        for(int i = 0; i<truelen-1;i++){
+            res+= charToInt(str[truelen-i-1])*base;
+            base*=10;
+        }
+       // printf("%d\n", res);
+        res = res*-1;
     }
+    else{
+        for(int i = 0; i<truelen;i++){
+            res+= charToInt(str[truelen-i-1])*base;
+            base*=10;
+        }
+    }
+   
     //res = res%(power(10,len-1));
     return res;
 }
